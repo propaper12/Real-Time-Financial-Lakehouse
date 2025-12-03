@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports: ["2181:2181"]
+    networks: [data-network]
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on: [zookeeper]
+    ports: ["9092:9092", "29092:29092"]
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks: [data-network]
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    ports: ["9000:9000", "9001:9001"]
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    networks: [data-network]
+
+  spark-consumer:
+    build: .
+    container_name: spark-consumer
+    restart: on-failure
+    depends_on: [kafka, minio]
+    environment:
+      - SPARK_MASTER=local[*]
+    volumes:
+      - ./checkpoints:/app/checkpoints
+    networks: [data-network]
+
+  spark-silver:
+    build: .
+    container_name: spark-silver
+    restart: on-failure
+    depends_on: [minio, spark-consumer]
+    environment:
+      - SPARK_MASTER=local[*]
+    command: python process_silver.py
+    volumes:
+      - ./checkpoints_silver:/app/checkpoints_silver
+    networks: [data-network]
+
+  dbt-runner:
+      build: ./dbt_project
+      container_name: dbt-runner
+      depends_on: [minio]
+      environment:
+        - DBT_PROFILES_DIR=/usr/app
+      volumes:
+        - ./dbt_project:/usr/app
+      networks: [data-network]
+
+networks:
+  data-network:
+    driver: bridge

@@ -1,0 +1,188 @@
+[0m09:55:02.195037 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b551b6c40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b5411d1c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b5411d130>]}
+
+
+============================== 09:55:02.205632 | 65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf ==============================
+[0m09:55:02.205632 [info ] [MainThread]: Running with dbt=1.10.15
+[0m09:55:02.208843 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt run', 'target_path': 'None', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'log_format': 'default', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'log_cache_events': 'False', 'empty': 'False', 'introspect': 'True', 'debug': 'False', 'profiles_dir': '/usr/app', 'printer_width': '80', 'no_print': 'None', 'write_json': 'True', 'partial_parse': 'True', 'warn_error': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': '/usr/app/logs', 'use_colors': 'True', 'version_check': 'True'}
+[0m09:55:02.479722 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b540fa250>]}
+[0m09:55:02.548972 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b541c22e0>]}
+[0m09:55:02.553305 [info ] [MainThread]: Registered adapter: duckdb=1.10.0
+[0m09:55:02.635253 [debug] [MainThread]: checksum: 14a228079bd6df63ba81633f9a3cf44ecfaa31056ac397c602753ec895dbf885, vars: {}, profile: , target: , version: 1.10.15
+[0m09:55:02.641229 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m09:55:02.643042 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b5505b520>]}
+[0m09:55:03.861482 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b482e2dc0>]}
+[0m09:55:03.955621 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m09:55:03.974352 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m09:55:04.004159 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b482e27c0>]}
+[0m09:55:04.006088 [info ] [MainThread]: Found 1 model, 456 macros
+[0m09:55:04.007621 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b482ef220>]}
+[0m09:55:04.010770 [info ] [MainThread]: 
+[0m09:55:04.013201 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m09:55:04.015562 [info ] [MainThread]: 
+[0m09:55:04.017777 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m09:55:04.020928 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_memory'
+[0m09:55:04.065097 [debug] [ThreadPool]: Using duckdb connection "list_memory"
+[0m09:55:04.067202 [debug] [ThreadPool]: On list_memory: /* {"app": "dbt", "dbt_version": "1.10.15", "profile_name": "crypto_lakehouse", "target_name": "dev", "connection_name": "list_memory"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"memory"'
+    
+  
+  
+[0m09:55:04.068857 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m09:55:06.877380 [debug] [ThreadPool]: SQL status: OK in 2.810 seconds
+[0m09:55:06.881017 [debug] [ThreadPool]: On list_memory: Close
+[0m09:55:06.883906 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_memory, now create_memory_main)
+[0m09:55:06.886433 [debug] [ThreadPool]: Creating schema "database: "memory"
+schema: "main"
+"
+[0m09:55:06.895878 [debug] [ThreadPool]: Using duckdb connection "create_memory_main"
+[0m09:55:06.898452 [debug] [ThreadPool]: On create_memory_main: /* {"app": "dbt", "dbt_version": "1.10.15", "profile_name": "crypto_lakehouse", "target_name": "dev", "connection_name": "create_memory_main"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='memory'
+        and type='sqlite'
+    
+  
+[0m09:55:06.900620 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m09:55:06.904307 [debug] [ThreadPool]: SQL status: OK in 0.004 seconds
+[0m09:55:06.907622 [debug] [ThreadPool]: Using duckdb connection "create_memory_main"
+[0m09:55:06.909261 [debug] [ThreadPool]: On create_memory_main: BEGIN
+[0m09:55:06.911616 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m09:55:06.913555 [debug] [ThreadPool]: Using duckdb connection "create_memory_main"
+[0m09:55:06.915760 [debug] [ThreadPool]: On create_memory_main: /* {"app": "dbt", "dbt_version": "1.10.15", "profile_name": "crypto_lakehouse", "target_name": "dev", "connection_name": "create_memory_main"} */
+
+    
+    
+        create schema if not exists "memory"."main"
+    
+[0m09:55:06.918224 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m09:55:06.921159 [debug] [ThreadPool]: On create_memory_main: COMMIT
+[0m09:55:06.923176 [debug] [ThreadPool]: Using duckdb connection "create_memory_main"
+[0m09:55:06.924840 [debug] [ThreadPool]: On create_memory_main: COMMIT
+[0m09:55:06.927005 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m09:55:06.928824 [debug] [ThreadPool]: On create_memory_main: Close
+[0m09:55:06.931954 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_memory_main, now list_memory_main)
+[0m09:55:06.939758 [debug] [ThreadPool]: Using duckdb connection "list_memory_main"
+[0m09:55:06.941494 [debug] [ThreadPool]: On list_memory_main: BEGIN
+[0m09:55:06.943660 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m09:55:06.947495 [debug] [ThreadPool]: SQL status: OK in 0.004 seconds
+[0m09:55:06.949691 [debug] [ThreadPool]: Using duckdb connection "list_memory_main"
+[0m09:55:06.951477 [debug] [ThreadPool]: On list_memory_main: /* {"app": "dbt", "dbt_version": "1.10.15", "profile_name": "crypto_lakehouse", "target_name": "dev", "connection_name": "list_memory_main"} */
+select
+      'memory' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'memory'
+  
+[0m09:55:06.962522 [debug] [ThreadPool]: SQL status: OK in 0.009 seconds
+[0m09:55:06.965876 [debug] [ThreadPool]: On list_memory_main: ROLLBACK
+[0m09:55:06.972632 [debug] [ThreadPool]: Failed to rollback 'list_memory_main'
+[0m09:55:06.974424 [debug] [ThreadPool]: On list_memory_main: Close
+[0m09:55:06.976579 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b482ef220>]}
+[0m09:55:06.978572 [debug] [MainThread]: Using duckdb connection "master"
+[0m09:55:06.980114 [debug] [MainThread]: On master: BEGIN
+[0m09:55:06.981662 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:55:06.984772 [debug] [MainThread]: SQL status: OK in 0.003 seconds
+[0m09:55:06.986514 [debug] [MainThread]: On master: COMMIT
+[0m09:55:06.988193 [debug] [MainThread]: Using duckdb connection "master"
+[0m09:55:06.989851 [debug] [MainThread]: On master: COMMIT
+[0m09:55:06.991914 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m09:55:06.993541 [debug] [MainThread]: On master: Close
+[0m09:55:07.001609 [debug] [Thread-1  ]: Began running node model.crypto_analytics.gold_market_summary
+[0m09:55:07.003744 [info ] [Thread-1  ]: 1 of 1 START sql table model main.gold_market_summary .......................... [RUN]
+[0m09:55:07.005572 [debug] [Thread-1  ]: Re-using an available connection from the pool (formerly list_memory_main, now model.crypto_analytics.gold_market_summary)
+[0m09:55:07.007455 [debug] [Thread-1  ]: Began compiling node model.crypto_analytics.gold_market_summary
+[0m09:55:07.018715 [debug] [Thread-1  ]: Writing injected SQL for node "model.crypto_analytics.gold_market_summary"
+[0m09:55:07.042166 [debug] [Thread-1  ]: Began executing node model.crypto_analytics.gold_market_summary
+[0m09:55:07.080703 [debug] [Thread-1  ]: Writing runtime sql for node "model.crypto_analytics.gold_market_summary"
+[0m09:55:07.103845 [debug] [Thread-1  ]: Using duckdb connection "model.crypto_analytics.gold_market_summary"
+[0m09:55:07.105747 [debug] [Thread-1  ]: On model.crypto_analytics.gold_market_summary: BEGIN
+[0m09:55:07.107906 [debug] [Thread-1  ]: Opening a new connection, currently in state closed
+[0m09:55:07.113134 [debug] [Thread-1  ]: SQL status: OK in 0.005 seconds
+[0m09:55:07.115049 [debug] [Thread-1  ]: Using duckdb connection "model.crypto_analytics.gold_market_summary"
+[0m09:55:07.116686 [debug] [Thread-1  ]: On model.crypto_analytics.gold_market_summary: /* {"app": "dbt", "dbt_version": "1.10.15", "profile_name": "crypto_lakehouse", "target_name": "dev", "node_id": "model.crypto_analytics.gold_market_summary"} */
+
+  
+    
+    
+
+    create  table
+      "memory"."main"."gold_market_summary__dbt_tmp"
+  
+    as (
+      
+
+SELECT
+    symbol,
+    date_trunc('minute', processed_time) as minute_window,
+
+    AVG(average_price) as avg_price,
+    MAX(average_price) as max_price,
+    MIN(average_price) as min_price,
+    AVG(volatility) as avg_volatility,
+    COUNT(*) as transaction_count
+
+FROM read_parquet('s3://market-data/silver_layer_delta/*.parquet')
+
+GROUP BY 1, 2
+ORDER BY 2 DESC
+    );
+  
+  
+[0m09:55:07.144108 [debug] [Thread-1  ]: SQL status: OK in 0.026 seconds
+[0m09:55:07.153309 [debug] [Thread-1  ]: Using duckdb connection "model.crypto_analytics.gold_market_summary"
+[0m09:55:07.155524 [debug] [Thread-1  ]: On model.crypto_analytics.gold_market_summary: /* {"app": "dbt", "dbt_version": "1.10.15", "profile_name": "crypto_lakehouse", "target_name": "dev", "node_id": "model.crypto_analytics.gold_market_summary"} */
+alter table "memory"."main"."gold_market_summary__dbt_tmp" rename to "gold_market_summary"
+[0m09:55:07.157995 [debug] [Thread-1  ]: SQL status: OK in 0.001 seconds
+[0m09:55:07.173032 [debug] [Thread-1  ]: On model.crypto_analytics.gold_market_summary: COMMIT
+[0m09:55:07.176251 [debug] [Thread-1  ]: Using duckdb connection "model.crypto_analytics.gold_market_summary"
+[0m09:55:07.177882 [debug] [Thread-1  ]: On model.crypto_analytics.gold_market_summary: COMMIT
+[0m09:55:07.179848 [debug] [Thread-1  ]: SQL status: OK in 0.001 seconds
+[0m09:55:07.188188 [debug] [Thread-1  ]: Using duckdb connection "model.crypto_analytics.gold_market_summary"
+[0m09:55:07.190169 [debug] [Thread-1  ]: On model.crypto_analytics.gold_market_summary: /* {"app": "dbt", "dbt_version": "1.10.15", "profile_name": "crypto_lakehouse", "target_name": "dev", "node_id": "model.crypto_analytics.gold_market_summary"} */
+
+      drop table if exists "memory"."main"."gold_market_summary__dbt_backup" cascade
+    
+[0m09:55:07.192444 [debug] [Thread-1  ]: SQL status: OK in 0.001 seconds
+[0m09:55:07.202901 [debug] [Thread-1  ]: On model.crypto_analytics.gold_market_summary: Close
+[0m09:55:07.206983 [debug] [Thread-1  ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65b43a5a-3416-4c1b-ba8f-bb3a3ec81bdf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b56979520>]}
+[0m09:55:07.209428 [info ] [Thread-1  ]: 1 of 1 OK created sql table model main.gold_market_summary ..................... [[32mOK[0m in 0.20s]
+[0m09:55:07.211676 [debug] [Thread-1  ]: Finished running node model.crypto_analytics.gold_market_summary
+[0m09:55:07.214704 [debug] [MainThread]: Using duckdb connection "master"
+[0m09:55:07.216490 [debug] [MainThread]: On master: BEGIN
+[0m09:55:07.217852 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m09:55:07.220600 [debug] [MainThread]: SQL status: OK in 0.003 seconds
+[0m09:55:07.222210 [debug] [MainThread]: On master: COMMIT
+[0m09:55:07.223691 [debug] [MainThread]: Using duckdb connection "master"
+[0m09:55:07.225469 [debug] [MainThread]: On master: COMMIT
+[0m09:55:07.227784 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m09:55:07.229784 [debug] [MainThread]: On master: Close
+[0m09:55:07.231607 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m09:55:07.232867 [debug] [MainThread]: Connection 'model.crypto_analytics.gold_market_summary' was properly closed.
+[0m09:55:07.234151 [info ] [MainThread]: 
+[0m09:55:07.235579 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 3.22 seconds (3.22s).
+[0m09:55:07.242279 [debug] [MainThread]: Command end result
+[0m09:55:07.285527 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/target/manifest.json
+[0m09:55:07.293713 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/target/semantic_manifest.json
+[0m09:55:07.307776 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/target/run_results.json
+[0m09:55:07.309307 [info ] [MainThread]: 
+[0m09:55:07.311174 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m09:55:07.312718 [info ] [MainThread]: 
+[0m09:55:07.314358 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m09:55:07.325249 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 5.2222776, "process_in_blocks": "6696", "process_kernel_time": 0.560323, "process_mem_max_rss": "215264", "process_out_blocks": "92104", "process_user_time": 3.765051}
+[0m09:55:07.327536 [debug] [MainThread]: Command `dbt run` succeeded at 09:55:07.327258 after 5.22 seconds
+[0m09:55:07.329285 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b551b6c40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b482e29d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b2b541c22e0>]}
+[0m09:55:07.330943 [debug] [MainThread]: Flushing usage events
+[0m09:55:07.989726 [debug] [MainThread]: An error was encountered while trying to flush usage events

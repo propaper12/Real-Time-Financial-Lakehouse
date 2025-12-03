@@ -1,0 +1,10 @@
+BAŞLATMA ADIMLARI
+Terminal 1: docker-compose up -d --build   (1 dakika bekle)
+Tarayıcı  : http://localhost:9001 adresine git
+Terminal 2: python producer.py
+Terminal 3: streamlit run dashboard.py
+
+Terminal 1: docker exec spark-silver python train_model.py
+Terminal 1: docker restart spark-silver
+
+Terminal 1: docker-compose down
